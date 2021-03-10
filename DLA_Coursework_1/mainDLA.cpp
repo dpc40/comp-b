@@ -4,6 +4,7 @@
 #include <vector>
 #include <math.h>
 #include <string>
+#include <ctime>
 
 #include "DLASystem.h"
 #include "Window.h" 
@@ -35,7 +36,7 @@ int main(int argc, char** argv) {
     sys = new DLASystem(win);
 
     // this is the seed for the random numbers
-    int seed = 6;
+    int seed = time(0);
     cout << "setting seed " << seed << endl;
     sys->setSeed(seed);
 
@@ -69,6 +70,7 @@ void drawFuncs::introMessage() {
     cout << "  r to clear everything (reset)" << endl;
     cout << "  z to pause and zoom in" << endl;
     cout << "  w or b to change background colour to white or black" << endl;
+    cout << "  0 to output the number of particles to the console" << endl;
 }
 
 // openGL function deals with the keyboard
@@ -122,6 +124,11 @@ void drawFuncs::handleKeypress(unsigned char key, int x, int y) {
         cout << "upd" << endl;
         sys->Update();
         break;
+    //case '0':
+      //  cout << "The radius of the cluster is " << clusterRadius << endl;
+        //cout << "The number of particles in the cluster is " << numParticles << endl;
+        //exit(0);
+        //break;
     }
     // tell openGL to redraw the window
     glutPostRedisplay();
